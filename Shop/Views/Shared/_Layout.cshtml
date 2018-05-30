@@ -1,42 +1,209 @@
-﻿<!DOCTYPE html>
+﻿@using Shop.Dal.Entities;
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
-</head>
-<body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
-    </div>
-
+    <title>@ViewBag.Title </title>    
+    @*<link rel="stylesheet" href="~/Content/Site.css" />*@
+    <link rel="stylesheet" href="~/Fonts/Fonts.css" /> 
+    <link href="http://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="~/Content/my-slider.css" />
+    <script src="~/Scripts/ism-2.2.min.js"></script>        
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    <script src="~/Scripts/jquery.cookie.js"></script>
+    <script src="~/Scripts/pageinit.js"></script>
     @RenderSection("scripts", required: false)
+
+    <style>
+        body{
+            margin:0px;
+            padding:0px;
+            /*background-image:url(../images/486056467.jpg);*/
+            /*background-image:url(https://media.istockphoto.com/photos/white-wood-painted-roughly-texture-picture-id518400220?s=2048x2048);*/
+            background-image:url(../../images/12.jpg);
+            /*background-image:url(https://media.istockphoto.com/vectors/background-grunge-grey-canvasvector-illustration-vector-id505642634?s=2048x2048);*/
+            background-repeat:no-repeat;            
+            background-attachment: fixed;
+            background-position: center; 
+        }
+        nav{
+            position:relative;
+            height:50px;
+            z-index:10;
+            border-bottom: 1px solid black;
+        }
+
+        nav > ul {
+            position: absolute;
+            margin: 10px;
+            width:90%;
+        }
+
+        nav>ul>li{
+            /*margin-left:80px;*/
+            display:inline-block;
+            /*padding-left:50px;*/
+            vertical-align:top;
+            width:14%;
+        }
+
+        nav>ul>li:hover>a
+        {
+            text-shadow: 0px 0px 6px rgba(255,255,255,0.7);
+        }
+                
+        nav>ul>li>a, nav>ul>li{
+            color: cornflowerblue;
+            font-size: 20px;
+            font-family: nautilus_pompiliusregular, Arial;          
+            text-decoration:none;
+        }
+       
+        header{
+            position:relative;
+            height:30px;
+            background-color:black;
+            opacity:0.5;
+        }       
+
+        .contacts {
+            position:absolute;
+            /*margin-left:30%;*/
+            top:0px;
+            right:60px;
+            bottom:0px;
+        }
+
+        .contacts span{
+            color: white;
+            font-size: 13px;
+            font-family: nautilus_pompiliusregular, Arial;  
+            display:inline-block;
+            margin-left:10px;
+            vertical-align:super;
+        }
+
+        .contacts img {
+            margin-left:80px;
+        }
+
+        .submenu {
+            margin-left: -20px;
+            list-style: none;
+            border-radius: 10px;
+            background-image: url(https://media.istockphoto.com/photos/white-wood-painted-roughly-texture-picture-id518400220?s=2048x2048);
+            padding: 20px;
+            opacity:0;
+            transition: .6s ease-in-out;
+        }
+
+        .submenu>li>a
+        {
+            color: cornflowerblue;
+            font-size: 18px;
+            font-family: nautilus_pompiliusregular, Arial;          
+            text-decoration:none;
+        }
+
+        .top-menu>li:hover .submenu {
+            opacity: 1;
+            transition: .6s ease-in-out;          
+        }
+
+
+    </style>
+    
+</head>
+<body>
+    <header style="border-bottom:1px solid black;">   
+        
+        @*<img src=""  style="max-width:60px; float:left;border:1px solid black;"/>
+        <nav class="navigation" style="border:1px solid black; margin-left:50px;">
+            <ul>
+                <li>@Html.ActionLink("Главная", "Home", "Index")</li>
+                <li>@Html.ActionLink("Каталог", "Home", "Catalog")</li>
+                <li>@Html.ActionLink("Контакты", "Home", "Contact")</li>
+                <li>@Html.ActionLink("Доставка", "Home", "Delivery")</li>
+            </ul>
+        </nav>*@
+        @*<div>          
+                <img src="~/images/phone.png" />
+                <span>+79997777777</span>            
+                <img src="~/images/email.png" />
+                <span>mail@mail.ru</span>            
+        </div>*@       
+    </header>
+
+    <div class="contacts">
+        <img src="~/images/phone.png" />
+        <span>+79997777777</span>
+        <img src="~/images/email.png" />
+        <span>mail@mail.ru</span>
+    </div>
+    
+    <nav class="navigation" >        
+        <ul class="top-menu">
+            <li>@Html.ActionLink("Главная", "Index", "Home")</li>
+            @*<li>@Html.ActionLink("Каталог", "Index", "Home")*@  
+            <li>Каталог
+            <ul class="submenu">
+                <li>@Html.ActionLink("Постельное белье", "Products", "Products", new { Type = ProductType.BedClothes, Page = 0 }, null)</li>
+                <li>@Html.ActionLink("Подушки", "Products", "Products", new { Type = ProductType.Pillow, Page = 0 }, null)</li>
+            </ul>
+        </li>
+            <li>@Html.ActionLink("Контакты", "Home", "Contact")</li>
+            <li>@Html.ActionLink("Доставка", "Home", "Delivery")</li>
+        </ul>
+    </nav>    
+    <div style="position: absolute;
+    right: 40px;
+    top: 37px;
+    padding: 5px 20px;
+    font-weight: bold;
+    color: #E91E63;
+    z-index:11,
+    /*border-radius: 10px;position:fixed;box-shadow:
+   0 1px 4px rgba(0, 0, 0, .3),
+   -23px 0 20px -23px rgba(0, 0, 0, .8),
+   23px 0 20px -23px rgba(0, 0, 0, .8),
+   0 0 40px rgba(0, 0, 0, .1) inset;*/" class="busket">
+        <img src="~/images/shop_cart.png" />
+        @*<span class="busket_text" style="vertical-align:super; min-width:200px;"></span>*@
+        <a style="vertical-align:super; min-width:200px; text-decoration-color: #E91E63;color: #E91E63;" class="busket_text" href="@Url.Action("Home","Busket")"></a>
+    </div>
+    @*<div class="slider" style="border:1px solid black; height:300px;" >   
+        <div class="ism-slider" data-transition_type="zoom" data-image_fx="zoompan" id="my-slider">
+            <ol>
+                <li>
+                    <a href="" target="_self">
+                        <img src="~/images/1517517233573_815060.jpg">
+                    </a>
+                </li>
+                <li>
+                    <img src="~/images/1517517375230_70553.jpg">
+                    <div class="ism-caption ism-caption-0">My slide caption text</div>
+                </li>
+                <li>
+                    <a href="" target="_blank">
+                        <img src="~/images/1517517426246_859283.jpg">
+                        <div class="ism-caption ism-caption-0">My slide caption text</div>
+                    </a>
+                </li>
+            </ol>
+        </div>
+        <p class="ism-badge" id="my-slider-ism-badge"><a class="ism-link" href="http://imageslidermaker.com" rel="nofollow">generated with ISM</a></p>
+
+    </div>*@
+
+    @*<div class="content" style="border:1px solid black; height:800px;">*@
+        @RenderBody()
+    @*</div>*@    
+    <footer class="footer" style="border-top:1px solid black;">
+        <span>Все права защищены ©2017</span> 
+    </footer>
+
+   
 </body>
 </html>

@@ -1,0 +1,37 @@
+﻿.wrapper {
+	height: 350px;
+	margin: 0 auto 0;
+	position:inherit;
+	width: 700px;
+   
+}
+
+.slider {
+    background-color: #ddd;
+    height: inherit;
+    overflow: hidden;
+    position: relative;
+    width: inherit;
+}
+
+.wrapper > input {
+	display: none;
+}
+
+.slides {
+    height: inherit;
+    position: absolute;
+    width: inherit;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: right bottom;
+}
+
+/*.slides > img
+{
+    max-width:500px;
+}*/
+
+.slide1{
+    background-image:url(http://donpostello.ru/upload/iblock/cf9/cf99008fb43d1e5922e1dc75951179aa.jpg);
+}

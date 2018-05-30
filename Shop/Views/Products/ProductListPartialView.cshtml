@@ -1,0 +1,66 @@
+﻿@using Shop.Models;
+@using Shop.Helpers;
+@model Shop.Models.ProductListModel
+
+@foreach(var p in @Model.Products)
+{
+
+    <li id="li@(p.Id)">
+        <div class="product-item" id="@p.Id">
+            <a href="#win@(p.Id)"><img src="@p.ImageUrl()" /></a>
+            
+                <p class="product-haeder">@p.Name</p>
+                <p>Материал: @p.GetMaterial()</p>
+                <p>Артикул: @p.Articul</p>
+                
+                <div class="buyarea" >
+                    @*<div class ="buybutton" id="@p.Id" price="@p.Price" style="display: inline-block;
+                                margin: 0px 10px;
+                                font-size: 18px;
+                                color: white;
+                                background-color: green;
+                                border-radius: 10px;
+                                padding: 5px 20px;
+                                font-family: nautilus_pompiliusregular, Arial;
+                                cursor:pointer;
+                                ">Купить</div>*@
+                    <div class="price">
+                        @p.Price <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAKPSURBVDhPY8AHZlQ7Kk+vdnaYWukUMLXa0WpahbcgVIp4MKXenmdRs1f/snb/W7tmxzw/vSLj0+X1ub+PL035sHFy2OMlbb7n5jV4hkOV4wfzGr3dl3cEPLi1rfj313Ot/7HhT6eb/x9flvpxcavPyYmVHqJQrZhgbrNX8tapkS9BGrAZhI6fH6z+t6zD787EMnsZqBEIMKPWy3zDxNAXX8+2YNWMC786Uvsf6NIr8+vtOaBGMTD8Z2BgXNLmc+XDqSYMDdumRcLxvrnx/69syPv/5SyqmutbC3/Ob/RqgxrHwDCnxi0AFPDIimB4WpXL/6Ud/v93z479v7Y/BMzfPj0aQ92KroCHE3M92MEGLmn32/72eAOGIhAGGbAX6DIYf8+cOLDY66N1KOpOr8r4Mr3CxQts4MquwKvIksgY3cBTKzPAYk/3V6Goe3awGhiWfjPBBq7pDb6PLImM4QYCI+vZgar/QN/8X9js/f8zWuR9PNn4f0mr3068BoIMQ8fARP3/wZ5yDLUoBuLy8p0dJWBDNk0KA7OfAF34+Qz2NAp2fZvvDLCBuCIF3XXLgbGNrgaGT6/M+DyzytUTbOCsWnf/U8vTMZINzIWbp0SA2di8CsMruwIewJMNKGEvbve9DAoHdIWgBH1hbQ6GODK+vrng54Jm7xawYTAwu97bbMOEsOckZz1gelzU5nMJJevBwNxmz8QtUyNffMIR8Oj42cGqf0s7fLEXDjAwr9HTFRj4925uLcJZfH083fT/2JLU94tafY7PrLcXgWrFDUAF7MIW725g0XRz58yY56AIu7QOVMCmvt8ALGCXtvudnVvvEQJVThqYVO2qOKXa1Q5UBcyocLbsr7cXgErhAAwMAO4UZu+sCwJRAAAAAElFTkSuQmCC">
+                    </div>
+                    <div style="display: inline-block;
+                        margin: 0px 10px 10px;
+                        font-size: 18px;
+                        color: white;
+                        background-color: gray;
+                        border-radius: 10px;
+                        font-family: nautilus_pompiliusregular, Arial;
+                        text-decoration: none;
+                        padding: 5px 20px;
+                        cursor:pointer;">
+                        Подробнее
+                    </div>
+                </div>
+
+                @*<p class="price">@p.Price <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAKPSURBVDhPY8AHZlQ7Kk+vdnaYWukUMLXa0WpahbcgVIp4MKXenmdRs1f/snb/W7tmxzw/vSLj0+X1ub+PL035sHFy2OMlbb7n5jV4hkOV4wfzGr3dl3cEPLi1rfj313Ot/7HhT6eb/x9flvpxcavPyYmVHqJQrZhgbrNX8tapkS9BGrAZhI6fH6z+t6zD787EMnsZqBEIMKPWy3zDxNAXX8+2YNWMC786Uvsf6NIr8+vtOaBGMTD8Z2BgXNLmc+XDqSYMDdumRcLxvrnx/69syPv/5SyqmutbC3/Ob/RqgxrHwDCnxi0AFPDIimB4WpXL/6Ud/v93z479v7Y/BMzfPj0aQ92KroCHE3M92MEGLmn32/72eAOGIhAGGbAX6DIYf8+cOLDY66N1KOpOr8r4Mr3CxQts4MquwKvIksgY3cBTKzPAYk/3V6Goe3awGhiWfjPBBq7pDb6PLImM4QYCI+vZgar/QN/8X9js/f8zWuR9PNn4f0mr3068BoIMQ8fARP3/wZ5yDLUoBuLy8p0dJWBDNk0KA7OfAF34+Qz2NAp2fZvvDLCBuCIF3XXLgbGNrgaGT6/M+DyzytUTbOCsWnf/U8vTMZINzIWbp0SA2di8CsMruwIewJMNKGEvbve9DAoHdIWgBH1hbQ6GODK+vrng54Jm7xawYTAwu97bbMOEsOckZz1gelzU5nMJJevBwNxmz8QtUyNffMIR8Oj42cGqf0s7fLEXDjAwr9HTFRj4925uLcJZfH083fT/2JLU94tafY7PrLcXgWrFDUAF7MIW725g0XRz58yY56AIu7QOVMCmvt8ALGCXtvudnVvvEQJVThqYVO2qOKXa1Q5UBcyocLbsr7cXgErhAAwMAO4UZu+sCwJRAAAAAElFTkSuQmCC"></p>*@
+            @*<a href="" style="color:white;">*@
+                @*<div style="display: inline-block;
+                        margin: 0px 10px 10px;
+                        font-size: 18px;
+                        color: white;
+                        background-color: gray;
+                        border-radius: 10px;
+                        font-family: nautilus_pompiliusregular, Arial;
+                        text-decoration: none;
+                        padding: 5px 50px;
+                        cursor:pointer;">
+                   Подробнее
+                </div>*@
+            @*</a>*@
+             
+</div>
+
+
+
+       
+    </li>
+}

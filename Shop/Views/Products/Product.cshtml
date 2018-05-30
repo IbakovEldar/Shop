@@ -1,0 +1,51 @@
+﻿@using Shop.Models
+@model ProductModel
+
+<a href="#x" class="overlay" id="win@(Model.Id)"></a>
+    <div class="popup">
+        <div class="gallery" id="gallery@(Model.Id)">
+            <img src="/ProductImages/@Model.MainImageName" alt="" class="main-img">
+            <ul>
+                @foreach(var image in @Model.ImageNames)
+                {<li><img src="/ProductImages/Thumb/@image" alt=""></li>}
+               
+                
+                 @*<li><img src="/ProductImages/Thumb/img_1.jpg" alt=""></li>
+                <li><img src="/ProductImages/Thumb/img_2.jpg" alt=""></li>
+                <li><img src="/ProductImages/Thumb/img_3.jpg" alt=""></li>*@
+                @*<li><img src="/ProductImages/Thumb/img_4.jpg" alt=""></li>
+                <li><img src="/ProductImages/Thumb/img_5.jpg" alt=""></li>
+                <li><img src="/ProductImages/Thumb/img_6.jpg" alt=""></li>*@
+            </ul>
+        </div>
+        @*<img class="is-image" src="/images/1517517233573_815060.jpg" alt="" />*@
+        <div class="description" style="margin: 50px 20px auto 550px">
+            <h2>@Model.Name</h2>  
+            <p>@Model.Description</p>            
+        </div>
+        <div class="buyblock" style="margin:120px 20px auto 550px">
+            <p>
+                <select>
+                    @foreach(var price in @Model.Prices)
+                    {
+                        <option sizeid="@price.SizeId" price="@price.Price" >@price.SizeName</option>}
+                </select>
+            </p>
+            <p><span id="price@(Model.Id)">1200</span><img style="max-width:25px;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAKPSURBVDhPY8AHZlQ7Kk+vdnaYWukUMLXa0WpahbcgVIp4MKXenmdRs1f/snb/W7tmxzw/vSLj0+X1ub+PL035sHFy2OMlbb7n5jV4hkOV4wfzGr3dl3cEPLi1rfj313Ot/7HhT6eb/x9flvpxcavPyYmVHqJQrZhgbrNX8tapkS9BGrAZhI6fH6z+t6zD787EMnsZqBEIMKPWy3zDxNAXX8+2YNWMC786Uvsf6NIr8+vtOaBGMTD8Z2BgXNLmc+XDqSYMDdumRcLxvrnx/69syPv/5SyqmutbC3/Ob/RqgxrHwDCnxi0AFPDIimB4WpXL/6Ud/v93z479v7Y/BMzfPj0aQ92KroCHE3M92MEGLmn32/72eAOGIhAGGbAX6DIYf8+cOLDY66N1KOpOr8r4Mr3CxQts4MquwKvIksgY3cBTKzPAYk/3V6Goe3awGhiWfjPBBq7pDb6PLImM4QYCI+vZgar/QN/8X9js/f8zWuR9PNn4f0mr3068BoIMQ8fARP3/wZ5yDLUoBuLy8p0dJWBDNk0KA7OfAF34+Qz2NAp2fZvvDLCBuCIF3XXLgbGNrgaGT6/M+DyzytUTbOCsWnf/U8vTMZINzIWbp0SA2di8CsMruwIewJMNKGEvbve9DAoHdIWgBH1hbQ6GODK+vrng54Jm7xawYTAwu97bbMOEsOckZz1gelzU5nMJJevBwNxmz8QtUyNffMIR8Oj42cGqf0s7fLEXDjAwr9HTFRj4925uLcJZfH083fT/2JLU94tafY7PrLcXgWrFDUAF7MIW725g0XRz58yY56AIu7QOVMCmvt8ALGCXtvudnVvvEQJVThqYVO2qOKXa1Q5UBcyocLbsr7cXgErhAAwMAO4UZu+sCwJRAAAAAElFTkSuQmCC"></p>
+            <p>
+                <div class ="buybutton" productid="@Model.Id" id="buy_button@(Model.Id)" style="display: inline-block;
+                margin: 0px 10px;
+                font-size: 18px;
+                color: white;
+                background-color: green;
+                border-radius: 10px;
+                padding: 5px 20px;
+                font-family: nautilus_pompiliusregular, Arial;
+                cursor:pointer;
+                ">Купить</div>
+            </p>
+
+        </div>
+        @*<a class="close" title="Закрыть" href="#close"></a>*@
+        <div class="close" title="Закрыть"></div>
+    </div>

@@ -1,31 +1,280 @@
-﻿@{
+﻿@*@using Shop.Models;
+@model IEnumerable<ProductItem>*@
+
+<div class="slider" style="border:1px solid black; height:300px;margin: 0px 250px 0px 50px;" >
+        <div class="ism-slider" data-transition_type="zoom" data-image_fx="zoompan" id="my-slider">
+            <ol>
+                <li>
+                    <a href="" target="_self">
+                        <img src="~/images/1517517233573_815060.jpg">
+                    </a>
+                </li>
+                <li>
+                    <img src="~/images/1517517375230_70553.jpg">
+                    <div class="ism-caption ism-caption-0">My slide caption text</div>
+                </li>
+                <li>
+                    <a href="" target="_blank">
+                        <img src="~/images/1517517426246_859283.jpg">
+                        <div class="ism-caption ism-caption-0">My slide caption text</div>
+                    </a>
+                </li>
+            </ol>
+        </div>
+        <p class="ism-badge" id="my-slider-ism-badge"><a class="ism-link" href="http://imageslidermaker.com" rel="nofollow">generated with ISM</a></p>
+
+    </div>
+
+
+
+
+@{
     ViewBag.Title = "Home Page";
 }
+@*<style>
+    .container{
+       position:relative;
+       height:800px;
+       border:1px solid black;
+    }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
+    .centralcontainer{
+        position:absolute;
+        left:230px;
+        right:230px;
+        top:10px;
+        border:1px solid black;
+    }
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+    .centralcontainer>li {
+        width: 250px;
+        min-height: 300px;
+        border: 1px solid #000;
+        border-radius:0px 0px 10px 10px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.5);
+        display: -moz-inline-stack;
+        display: inline-block;
+        vertical-align: top;
+        margin: 10px;
+        zoom: 1;
+        *display: inline;
+        _height: 250px;
+        background-color:papayawhip;
+    }
+
+    /*.centralcontainer>li>a{
+        text-decoration:none;
+        
+    }*/
+
+    .product-item img{
+        max-width:250px;
+    }
+    
+    .product-item a
+    {
+        text-decoration:none;
+    }
+
+    .product-item  p {
+        margin: 10px;
+        color: cornflowerblue;
+        font-size: 13px;
+        font-family: nautilus_pompiliusregular, Arial;
+    }
+
+    p.product-haeder {
+        font-size: 20px;
+    }
+    p.price{
+        color:#0D58A6;
+        text-align:end; 
+        font-size:20px;
+        font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        margin: 15px 15px;
+    }
+
+
+    .overlay {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 10;
+    display: none;
+/* фон затемнения */
+    background-color: rgba(0, 0, 0, 0.65);
+    position: fixed; /* фиксированное поцизионирование */
+    cursor: default; /* тип курсара */
+}
+/* активируем слой затемнения */
+.overlay:target {
+    display: block;
+}
+/* стили модального окна */
+.popup {
+    top: -100%;
+    right: 0;
+    left: 50%;
+    font-size: 14px;
+    z-index: 20;
+    margin: 0;
+    width: 85%;
+    min-width: 320px;
+    max-width: 600px;
+/* фиксированное позиционирование, окно стабильно при прокрутке */
+    position: fixed;
+    padding: 15px;
+    border: 1px solid #383838;
+    background: #fefefe;
+/* скругление углов */
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    border-radius: 4px;
+    font: 14px/18px 'Tahoma', Arial, sans-serif;
+/* внешняя тень */
+    -webkit-box-shadow: 0 15px 20px rgba(0,0,0,.22),0 19px 60px rgba(0,0,0,.3);
+    -moz-box-shadow: 0 15px 20px rgba(0,0,0,.22),0 19px 60px rgba(0,0,0,.3);
+    -ms-box-shadow: 0 15px 20px rgba(0,0,0,.22),0 19px 60px rgba(0,0,0,.3);
+    box-shadow: 0 15px 20px rgba(0,0,0,.22),0 19px 60px rgba(0,0,0,.3);
+    -webkit-transform: translate(-50%, -500%);
+    -ms-transform: translate(-50%, -500%);
+    -o-transform: translate(-50%, -500%);
+    transform: translate(-50%, -500%);
+    -webkit-transition: -webkit-transform 0.6s ease-out;
+    -moz-transition: -moz-transform 0.6s ease-out;
+    -o-transition: -o-transform 0.6s ease-out;
+    transition: transform 0.6s ease-out;
+}
+/* активируем модальный блок */
+.overlay:target+.popup {
+    -webkit-transform: translate(-50%, 0);
+    -ms-transform: translate(-50%, 0);
+    -o-transform: translate(-50%, 0);
+    transform: translate(-50%, 0);
+    top: 20%;
+}
+/* формируем кнопку закрытия */
+.close {
+    top: -10px;
+    right: -10px;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    padding: 0;
+    border: 2px solid #ccc;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
+    border-radius: 15px;
+    background-color: rgba(61, 61, 61, 0.8);
+    -webkit-box-shadow: 0px 0px 10px #000;
+    -moz-box-shadow: 0px 0px 10px #000;
+    box-shadow: 0px 0px 10px #000;
+    text-align: center;
+    text-decoration: none;
+    font: 13px/20px 'Tahoma', Arial, sans-serif;
+    font-weight: bold;
+    -webkit-transition: all ease .8s;
+    -moz-transition: all ease .8s;
+    -ms-transition: all ease .8s;
+    -o-transition: all ease .8s;
+    transition: all ease .8s;
+}
+.close:before {
+    color: rgba(255, 255, 255, 0.9);
+    content: "X";
+    text-shadow: 0 -1px rgba(0, 0, 0, 0.9);
+    font-size: 12px;
+}
+.close:hover {
+    background-color: rgba(252, 20, 0, 0.8);
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);    
+}
+/* изображения внутри окна */
+.popup img {
+    width: 100%;
+    height: auto;
+}
+/* миниатюры слева/справа */
+.pic-left, 
+.pic-right {
+    width: 25%;
+    height: auto;
+}
+.pic-left {
+    float: left;
+    margin: 5px 15px 5px 0;
+}
+.pic-right {
+    float: right;
+    margin: 5px 0 5px 15px;
+}
+/* элементы м-медиа, фреймы */
+.popup embed, 
+.popup iframe {
+    top: 0;
+    right: 0;
+    bottom: 0; 
+    left: 0; 
+    display:block;
+    margin: auto;
+    min-width: 320px;
+    max-width: 600px;
+    width: 100%;
+}
+.popup h2 { /* заголовок 2 */
+    margin: 0;
+    color: #008000;
+    padding: 5px 0px 10px;
+    text-align: left;
+    text-shadow: 1px 1px 3px #adadad;
+    font-weight: 500;
+    font-size: 1.4em;
+    font-family: 'Tahoma', Arial, sans-serif;
+    line-height: 1.3;
+}
+/* параграфы */
+.popup p {margin: 0; padding: 5px 0}
+
+
+</style>*@
+@*<div class ="container"> 
+    <div class="centralcontainer">
+        
+        @foreach (var p in @Model)
+        {
+
+        <li>
+            
+                <div class="product-item">
+                    <a href="#win@p.Id"><img src="@p.ImageUrl" /></a>
+            <a href="">
+                <p class="product-haeder">@p.Name</p>
+                <p>Размер: @p.Size</p>
+                <p>Материал: @p.Material</p>
+                <p>Описание: @p.Description</p>
+                <p class="price">3500 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAKPSURBVDhPY8AHZlQ7Kk+vdnaYWukUMLXa0WpahbcgVIp4MKXenmdRs1f/snb/W7tmxzw/vSLj0+X1ub+PL035sHFy2OMlbb7n5jV4hkOV4wfzGr3dl3cEPLi1rfj313Ot/7HhT6eb/x9flvpxcavPyYmVHqJQrZhgbrNX8tapkS9BGrAZhI6fH6z+t6zD787EMnsZqBEIMKPWy3zDxNAXX8+2YNWMC786Uvsf6NIr8+vtOaBGMTD8Z2BgXNLmc+XDqSYMDdumRcLxvrnx/69syPv/5SyqmutbC3/Ob/RqgxrHwDCnxi0AFPDIimB4WpXL/6Ud/v93z479v7Y/BMzfPj0aQ92KroCHE3M92MEGLmn32/72eAOGIhAGGbAX6DIYf8+cOLDY66N1KOpOr8r4Mr3CxQts4MquwKvIksgY3cBTKzPAYk/3V6Goe3awGhiWfjPBBq7pDb6PLImM4QYCI+vZgar/QN/8X9js/f8zWuR9PNn4f0mr3068BoIMQ8fARP3/wZ5yDLUoBuLy8p0dJWBDNk0KA7OfAF34+Qz2NAp2fZvvDLCBuCIF3XXLgbGNrgaGT6/M+DyzytUTbOCsWnf/U8vTMZINzIWbp0SA2di8CsMruwIewJMNKGEvbve9DAoHdIWgBH1hbQ6GODK+vrng54Jm7xawYTAwu97bbMOEsOckZz1gelzU5nMJJevBwNxmz8QtUyNffMIR8Oj42cGqf0s7fLEXDjAwr9HTFRj4925uLcJZfH083fT/2JLU94tafY7PrLcXgWrFDUAF7MIW725g0XRz58yY56AIu7QOVMCmvt8ALGCXtvudnVvvEQJVThqYVO2qOKXa1Q5UBcyocLbsr7cXgErhAAwMAO4UZu+sCwJRAAAAAElFTkSuQmCC"></p>
+            </a>
+            </div>
+               
+            
+             Модальное окно №4 
+            <a href="#x" class="overlay" id="win@p.Id"></a>
+            <div class="popup">
+                <img class="is-image" src="@p.ImageUrl" alt="" />
+                <div style="background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABABAMAAABYR2ztAAAAIVBMVEX///////////////////////////////////////////9/gMdvAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAAAJcEhZcwAAAuUAAALlARv+XnsAAABYSURBVEjH7dYxDoAwDEPR5Ab1/S8LVEgsyL8SG3XWWK/dnKpnumA0/L4lAOSJE/DEtXfEBBxxBwYFBH8IEWJbggL4RIAAPwFWC+VDqXEtYrFyNWO5v58HB4q9HAkl7KTYAAAAAElFTkSuQmCC);
+    right: 10px;width:30px;height:30px;position:absolute; margin-top:-100px;right:10px;background-size:30px;"></div>
+                <a class="close" title="Закрыть" href="#close"></a>
+            </div>     
+        </li>
+        }
+     
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
-</div>
+</div>*@

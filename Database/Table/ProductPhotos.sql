@@ -1,0 +1,6 @@
+﻿CREATE TABLE [dbo].[ProductPhotos]
+(
+	[Id] INT NOT NULL PRIMARY KEY IDENTITY,
+	[ProductId] INT NOT NULL,
+	[FileName] NVARCHAR(4000) NOT NULL
+)
