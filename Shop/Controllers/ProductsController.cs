@@ -1,4 +1,5 @@
-﻿using Shop.Dal.Entities;
+﻿using System.Linq;
+using Shop.Dal.Entities;
 using Shop.Dal.Interface;
 using Shop.Helpers;
 using Shop.Models;
@@ -41,16 +42,24 @@ namespace Shop.Controllers
 
 			return PartialView("Product", new ProductModel
 			{
-				Id=id,
-				Name=product.Name,
-				Material=product.GetMaterial(),
-				MainImageName="img_1.jpg",
-				ImageNames=new System.Collections.Generic.List<string> { "img_1.jpg", "img_2.jpg" },
-				Prices=new System.Collections.Generic.List<Models.SizePrice> {
-					new Models.SizePrice { SizeId=1, SizeName="1,5 спальный", Price=1500 },
-					new Models.SizePrice { SizeId=1, SizeName="2-x спальный", Price=3000 }
-					}
+				Id = id,
+				Name = product.Name,
+				Material = product.GetMaterial(),
+				MainImageName = product.ImageNames.First(), //"img_1.jpg",
+				ImageNames = product.ImageNames, //new System.Collections.Generic.List<string> { "img_1.jpg", "img_2.jpg" },
+				Prices =
+					product.Prices.Select(x => new Models.SizePrice {SizeId = x.SizeId, SizeName = x.SizeName, Price = x.Price})
+						.ToList()
+				//Prices=new System.Collections.Generic.List<Models.SizePrice> {
+				//	new Models.SizePrice { SizeId=1, SizeName="1,5 спальный", Price=1500 },
+				//	new Models.SizePrice { SizeId=1, SizeName="2-x спальный", Price=3000 }
+				//}
 			});
+		}
+
+		public ActionResult AddForm()
+		{
+			return View();
 		}
 	}
 }

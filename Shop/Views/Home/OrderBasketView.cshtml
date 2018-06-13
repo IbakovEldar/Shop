@@ -1,0 +1,23 @@
+﻿@using Shop.Models
+@model BasketModel
+@{
+    ViewBag.Title = "OrderBasketView";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link rel="stylesheet" href="~/Content/basketorder.css" /> 
+
+<h2>OrderBasketView</h2>
+
+@foreach (var item in Model.Products)
+{
+    <div class="product_container" productid="@item.Id">
+        <div class="img_container">
+            <img src="~/ProductImages/@item.Image"/>
+        </div>
+        <div class="product_desc">
+            <p>@item.Name</p>
+            <p>Артикул:@item.Articul</p>
+        </div>
+    </div>
+}
+

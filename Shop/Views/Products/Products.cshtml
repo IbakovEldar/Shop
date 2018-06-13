@@ -259,11 +259,14 @@
 </style>
 <div class="container">
     <div class="path"><span>@Model.PathName</span></div>
+    <div style ="  margin: 20px auto 0px 100px;">
+        @Html.ActionLink("Добавить", "AddForm","Products")
+    </div>
     <div class="centralcontainer" id="scrolList">
 
-       @Html.Partial("ProductListPartialView",@Model)
+        @Html.Partial("ProductListPartialView",@Model)
 
-    </div>    
+    </div>
 </div>
 
 <script src="~/Scripts/productpageinit.js"></script> 

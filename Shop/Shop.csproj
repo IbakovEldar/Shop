@@ -136,6 +136,10 @@
     </Compile>
     <Compile Include="Helpers\MapperHelper.cs" />
     <Compile Include="images\ProductItem.cs" />
+    <Compile Include="Models\Basket.cs" />
+    <Compile Include="Models\BasketItem.cs" />
+    <Compile Include="Models\BasketModel.cs" />
+    <Compile Include="Models\BasketProductModel.cs" />
     <Compile Include="Models\SizePrice.cs" />
     <Compile Include="Models\ProductListModel.cs" />
     <Compile Include="Models\ProductModel.cs" />
@@ -144,6 +148,8 @@
     <Compile Include="Windsor\WindsorInstaller.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\addform.css" />
+    <Content Include="Content\basketorder.css" />
     <Content Include="Content\my-slider.css" />
     <Content Include="Content\slider.css" />
     <Content Include="Fonts\Fonts.css" />
@@ -182,6 +188,7 @@
     <Content Include="Fonts\nautilus.woff" />
     <Content Include="Fonts\nautilus.woff2" />
     <Content Include="Scripts\ism-2.2.min.js" />
+    <None Include="Properties\PublishProfiles\shop.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -216,10 +223,11 @@
     <Content Include="Views\Products\Products.cshtml" />
     <Content Include="Views\Products\ProductListPartialView.cshtml" />
     <Content Include="Views\Products\Product.cshtml" />
+    <Content Include="Views\Home\OrderBasketView.cshtml" />
+    <Content Include="Views\Products\AddForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\OrderBusket\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

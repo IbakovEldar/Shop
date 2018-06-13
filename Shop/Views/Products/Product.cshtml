@@ -4,28 +4,19 @@
 <a href="#x" class="overlay" id="win@(Model.Id)"></a>
     <div class="popup">
         <div class="gallery" id="gallery@(Model.Id)">
-            <img src="/ProductImages/@Model.MainImageName" alt="" class="main-img">
+            <img src="~/ProductImages/@Model.MainImageName" alt="" class="main-img">
             <ul>
                 @foreach(var image in @Model.ImageNames)
-                {<li><img src="/ProductImages/Thumb/@image" alt=""></li>}
-               
-                
-                 @*<li><img src="/ProductImages/Thumb/img_1.jpg" alt=""></li>
-                <li><img src="/ProductImages/Thumb/img_2.jpg" alt=""></li>
-                <li><img src="/ProductImages/Thumb/img_3.jpg" alt=""></li>*@
-                @*<li><img src="/ProductImages/Thumb/img_4.jpg" alt=""></li>
-                <li><img src="/ProductImages/Thumb/img_5.jpg" alt=""></li>
-                <li><img src="/ProductImages/Thumb/img_6.jpg" alt=""></li>*@
+                {<li><img src="~/ProductImages/Thumb/@image" alt=""></li>}
             </ul>
         </div>
-        @*<img class="is-image" src="/images/1517517233573_815060.jpg" alt="" />*@
         <div class="description" style="margin: 50px 20px auto 550px">
             <h2>@Model.Name</h2>  
             <p>@Model.Description</p>            
         </div>
         <div class="buyblock" style="margin:120px 20px auto 550px">
             <p>
-                <select>
+                <select id="sizes@(Model.Id)">
                     @foreach(var price in @Model.Prices)
                     {
                         <option sizeid="@price.SizeId" price="@price.Price" >@price.SizeName</option>}

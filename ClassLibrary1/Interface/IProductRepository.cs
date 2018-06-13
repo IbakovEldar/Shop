@@ -7,10 +7,12 @@ using System.Threading.Tasks;
 
 namespace Shop.Dal.Interface
 {
-    public interface IProductRepository
-    {
+	public interface IProductRepository
+	{
 		List<Product> GetProducts(GetProductsRequest request);
 
 		ProductCard GetProductCard(int id);
+
+		List<SizePrice> GetSizes();
 	}
 }

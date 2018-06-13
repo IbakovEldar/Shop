@@ -5,15 +5,15 @@
 
     function click_buy (event) {
         var id = event.target.getAttribute("productid");
-        var price = $("#price" + id);
 
-        var product = Basket.Products.filter(n=> n.Id == id);
+        var product = Basket.Products.filter(n => n.Id == id);
         if (product.length == 0) {
 
             var item = new Object();
             item.Id = id;
             item.Count = 1;
-            item.Price = parseInt(price[0].outerText);
+            item.SizeId = $(event.target).parents(".buyblock").find("option:checked").attr("sizeid");
+            item.Price = parseInt($(event.target).parents(".buyblock").find("option:checked").attr("price"));
             Basket.Products.push(item);
         }
         else {
@@ -26,7 +26,7 @@
             count = count + Basket.Products[i].Count;
             summ = summ + (Basket.Products[i].Price*Basket.Products[i].Count);
         }
-        //basket.Products.reduce(function (a, b) { return a.Price + b.Price; }, 0);
+        
 
         $('.busket_text').text("   Всего " + count + " на сумму " + summ + " p.");
 
@@ -35,9 +35,14 @@
 
     }
 
-    function product_card(event)
+    function product_size_changed(event) {
+        var target = $(event.currentTarget);
+        var price = target.find("option:checked").attr("price");
+        target.parents(".buyblock").find("span").text(price);
+    }
+
+    function get_product_card(event)
     {
-        //var id = event.target.getAttribute("id");
         var target = $(event.currentTarget);
         var id = target.attr("id");
         var popupHref = '#win' + id;
@@ -50,13 +55,17 @@
                     if (data != '') {
                         $('#li' + id).append(data);
 
+                        ///Линкуем эвенты 
                         $('#buy_button' + id).bind("click", click_buy);
+                        $('#sizes' + id).bind("change",product_size_changed);
+
                         $(popupHref + ' + .popup').addClass('showpopup');
                         $(popupHref + ' + .popup .close').click(function () {
                             var item = $(popupHref + ' + .popup');
                             item.removeClass('showpopup');
                         });
-                                               
+
+                        //Формируем картинки
                         var galleryClass = '#gallery' + id;
                         $(galleryClass + ' li img').hover(function () {
                             var $gallery = $(this).parents(galleryClass);
@@ -100,8 +109,8 @@
                         page++;
                         //$('.buybutton').unbind("click", click_buy);
                         //$('.buybutton').bind("click", click_buy);
-                        $('.product-item').unbind('click', product_card);
-                        $('.product-item').bind('click', product_card);
+                        $('.product-item').unbind('click', get_product_card);
+                        $('.product-item').bind('click', get_product_card);
                         //$('.buybutton').click(click_buy);
                     }
                     else {
@@ -116,9 +125,7 @@
     loadItems();
    
     $(window).scroll(function () {
-        //if ($(window).scrollTop() = $(document).height() - ($(window).height()/2)) {
         if ($(window).scrollTop() > ($(document).height() / 2)) {
-
             loadItems();
         }
     });

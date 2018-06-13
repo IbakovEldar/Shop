@@ -1,0 +1,29 @@
+﻿.product_container {
+    border: solid 1px;
+    height: 200px;
+    margin: 10px 40px;
+    border-radius: 6px;
+}
+
+.product_container div {
+     position: absolute;
+}
+
+.img_container {
+    border: solid 1px;
+    margin: 25px 30px;
+    max-width: 200px;
+}
+
+.product_desc {
+    border: solid 1px;
+    margin: 20px 200px;
+}
+
+.product_desc > p
+{
+    color: cornflowerblue;
+    font-size: 14px;
+    font-family: nautilus_pompiliusregular, Arial;          
+    text-decoration:none;
+}

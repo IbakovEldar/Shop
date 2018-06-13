@@ -49,8 +49,8 @@ namespace Shop.Dal.Implementation
 		{
 			using(var connection = GetConnection())
 			{
-				var query = $"SELECT Id, Type,Name	,Material,Description, Articul" +
-							$"FROM [dbo].[Products] with(nolock) WHERE Id = {id}";
+				var query = "SELECT Id, Type,Name,Material,Description, Articul" +
+							$" FROM [dbo].[Products] with(nolock) WHERE Id = {id}";
 				var product = connection.Query<ProductCard>(query, commandType: CommandType.Text).FirstOrDefault();
 
 				if(product == null)
@@ -64,6 +64,15 @@ namespace Shop.Dal.Implementation
 				product.Prices = connection.Query<SizePrice>(priceQuery, commandType: CommandType.Text).ToList();
 
 				return product;
+			}
+		}
+
+		public List<SizePrice> GetSizes()
+		{
+			using (var connection = GetConnection())
+			{
+				var query = "select Id as SizeId, Name as SizeName from [dbo].[Sizes] with(nolock)";
+				return connection.Query<SizePrice>(query, commandType: CommandType.Text).ToList();
 			}
 		}
 	}		 
