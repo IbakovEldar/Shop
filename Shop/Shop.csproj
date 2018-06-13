@@ -136,6 +136,7 @@
     </Compile>
     <Compile Include="Helpers\MapperHelper.cs" />
     <Compile Include="images\ProductItem.cs" />
+    <Compile Include="Models\AddFormModel.cs" />
     <Compile Include="Models\Basket.cs" />
     <Compile Include="Models\BasketItem.cs" />
     <Compile Include="Models\BasketModel.cs" />
