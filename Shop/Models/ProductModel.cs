@@ -15,7 +15,7 @@ namespace Shop.Models
 
 		public string Description { get; set; }
 
-		public List<SizePrice> Prices { get; set; }
+		public List<SizePriceModel> Prices { get; set; }
 
 		public string MainImageName { get; set; }
 		public List<string> ImageNames { get; set; }

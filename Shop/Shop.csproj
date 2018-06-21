@@ -141,7 +141,7 @@
     <Compile Include="Models\BasketItem.cs" />
     <Compile Include="Models\BasketModel.cs" />
     <Compile Include="Models\BasketProductModel.cs" />
-    <Compile Include="Models\SizePrice.cs" />
+    <Compile Include="Models\SizePriceModel.cs" />
     <Compile Include="Models\ProductListModel.cs" />
     <Compile Include="Models\ProductModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

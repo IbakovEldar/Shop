@@ -5,7 +5,7 @@ using System.Web;
 
 namespace Shop.Models
 {
-	public class SizePrice
+	public class SizePriceModel
 	{
 		public string SizeName { get; set; }
 

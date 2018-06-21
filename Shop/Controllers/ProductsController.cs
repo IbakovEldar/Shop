@@ -48,7 +48,7 @@ namespace Shop.Controllers
 				MainImageName = product.ImageNames.First(), //"img_1.jpg",
 				ImageNames = product.ImageNames, //new System.Collections.Generic.List<string> { "img_1.jpg", "img_2.jpg" },
 				Prices =
-					product.Prices.Select(x => new Models.SizePrice {SizeId = x.SizeId, SizeName = x.SizeName, Price = x.Price})
+					product.Prices.Select(x => new Models.SizePriceModel {SizeId = x.SizeId, SizeName = x.SizeName, Price = x.Price})
 						.ToList()
 				//Prices=new System.Collections.Generic.List<Models.SizePrice> {
 				//	new Models.SizePrice { SizeId=1, SizeName="1,5 спальный", Price=1500 },
@@ -59,7 +59,17 @@ namespace Shop.Controllers
 
 		public ActionResult AddForm()
 		{
-			return View();
+			var sizes = _productRepository.GetSizes();
+			var model = new AddFormModel
+			{
+				Sizes = sizes.Select(x => new SizePriceModel
+				{
+					Price = x.Price,
+					SizeId = x.SizeId,
+					SizeName = x.SizeName
+				}).ToList()
+			};
+			return View(model);
 		}
 	}
 }

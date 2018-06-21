@@ -11,7 +11,7 @@ namespace Shop.Models
 
 		public string Articul { get; set; }
 
-		public SizePrice Price { get; set; }
+		public SizePriceModel Price { get; set; }
 
 		public int Count { get; set; }
 

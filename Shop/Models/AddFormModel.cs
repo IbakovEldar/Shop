@@ -7,5 +7,6 @@ namespace Shop.Models
 {
 	public class AddFormModel
 	{
+		public List<SizePriceModel> Sizes { get; set; }
 	}
 }

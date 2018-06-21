@@ -65,7 +65,7 @@ namespace Shop.Controllers
 				};
 				
 				var size = productEntity.Prices.First(x => x.SizeId == inputProduct.SizeId);
-				productModel.Price = new SizePrice {Price = size.Price, SizeId = size.SizeId, SizeName = size.SizeName};
+				productModel.Price = new SizePriceModel {Price = size.Price, SizeId = size.SizeId, SizeName = size.SizeName};
 				model.Add(productModel);
 			}
 
