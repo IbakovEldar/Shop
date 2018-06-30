@@ -1,4 +1,5 @@
 ﻿/// <autosync enabled="true" />
+/// <reference path="addform.js" />
 /// <reference path="bootstrap.js" />
 /// <reference path="ism-2.2.min.js" />
 /// <reference path="jquery.cookie.js" />

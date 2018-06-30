@@ -2,3 +2,75 @@
     margin-left: 50px;
 }
 
+.pricearia {
+	margin-left: 50px;
+}
+
+.pricearia,.photo_aria > * {
+	display: inline
+}
+
+#addnewprice,#add_photo {
+	margin-left: 50px;
+	height: 30px;
+	width: 150px;
+}
+
+.main_add_window {
+	margin-left: 10%;
+	margin-top: 50px;
+	background: papayawhip;
+	border-radius: 15px;
+	padding: 30px 40px 80px;
+}
+
+p {
+	margin-top: 20px;
+}
+
+p > input {
+	width: 300px;
+	height: 30px;
+	margin-left: 40px;
+	margin-top: 20px;
+}
+
+
+
+p>textarea {
+	margin-left: 40px;
+	margin-top: 10px;
+	height: 70px;
+	width: 500px;
+}
+
+.pricearia > p> input {
+	width: 90px;
+}
+
+.delete_price {
+	margin-left: 20px;
+}
+
+.thumb {
+	height: 280px;
+	border: 1px solid #000;
+	margin: 20px 10px 0 0;
+}
+#list {
+	display: inline;
+}
+
+#save {
+	margin-left: 50px;
+}
+
+.photo_container {
+	position: relative;
+}
+
+.delete_photo {
+	position: absolute;
+	margin: 0 auto 10px 0;
+}
+

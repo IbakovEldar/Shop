@@ -5,27 +5,78 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <link rel="stylesheet" href="~/Content/addform.css" /> 
+<link rel="stylesheet" href="~/Content/bootstrap.min.css" /> 
+<script src="~/Scripts/addform.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
 
-<h2>Добавить товар</h2>
+<div class="main_add_window">
+	<h2>Добавить товар</h2>
 
-<p>
-    <span>Название</span><input id="name"/>
-</p>
-<p>
-    <span>Артикул</span><input id="articul" />
-</p>
-<p>
-    <span>Описание</span><textarea id="description" cols="40"></textarea>
-</p>
-<p>
-	<span>Цены</span>
-</p>
-<p>
-	<select>
-		@foreach (var size in @Model.Sizes)
-		{
-			<option id="@size.SizeId">@size.SizeName</option>
-		}
-	</select>
-</p>
+	<p>
+		<div class="alert alert-danger" id="name_alert" role="alert">
+			Введите название
+		</div>
+		<span>Название</span><input id="name"/>
+	</p>
+	<p>
+		<div class="alert alert-danger" id="articul_alert" role="alert">
+			Введите артикул
+		</div>
+		<span>Артикул</span><input id="articul"/>
+	</p>
+	<p>
+		<div class="alert alert-danger" id="description_alert" role="alert">
+			Введите описание
+		</div>
+		<span>Описание</span><textarea id="description" cols="40"></textarea>
+	</p>
+	<p></p>
+	<p></p>
+	<p>
+		<h2><b>Цены</b>
+		</h2>
+	</p>
+	<div class="alert alert-danger" id="price_alert" role="alert">
+		Введите цену
+	</div>
+	<div class="pricearia">
+		@*<select>
+				@foreach (var size in @Model.Sizes)
+				{
+					<option id="@size.SizeId">@size.SizeName</option>
+				}
+			</select>
+			<input id="price"/>*@
+		@Html.Partial("PriceAria", @Model)
+	</div>
+	<p>
+		<button id="addnewprice">Добавить еще</button>
+	</p>
+	<br/>
+	<br />
+	<p>
+		<h2><b>Фото</b></h2>
+	</p>
+	<p>
+		<div class="alert alert-danger" id="photo_alert" role="alert">
+			Загрузите фотографию
+		</div>
+		<div class="alert alert-danger" id="photo_load_alert" role="alert">
+			Ошибка загрузки фотографии
+		</div>
+		<div class="photo_aria">
+			<p>
+				<input type="file" name="files[]" id="photoes" multiple/>
+			</p>
+			<br/>
+			<br/>
+			<p>
+				<output id="list"></output>
+			</p>
+		</div>
+	</p>
+
+	<a href="#" class="btn btn-success" id="addproduct" role="button">Сохранить</a>
+</div>
+
 

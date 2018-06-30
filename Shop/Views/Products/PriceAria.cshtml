@@ -1,0 +1,13 @@
+﻿@using Shop.Models
+@model AddFormModel
+
+<p class="price_item">
+	<select>
+		@foreach (var size in @Model.Sizes)
+		{
+			<option id="@size.SizeId">@size.SizeName</option>
+		}
+	</select>
+	<input id="price"/>
+	<a href="#" class="btn btn-danger delete_price" onclick="deleteprice(this)" role="button">Удалить</a>
+</p>
