@@ -65,7 +65,7 @@ namespace Shop.Controllers
 			var sizes = _productRepository.GetSizes();
 			var model = new AddFormModel
 			{
-				Sizes = sizes.Select(x => new SizePriceModel
+				SizePriceModels = sizes.Select(x => new SizePriceModel
 				{
 					Price = x.Price,
 					SizeId = x.SizeId,
@@ -80,7 +80,7 @@ namespace Shop.Controllers
 			var sizes = _productRepository.GetSizes();
 			var model = new AddFormModel
 			{
-				Sizes = sizes.Select(x => new SizePriceModel
+				SizePriceModels = sizes.Select(x => new SizePriceModel
 				{
 					Price = x.Price,
 					SizeId = x.SizeId,
@@ -115,6 +115,10 @@ namespace Shop.Controllers
 			return Json(names);
 		}
 
+		public ActionResult AddOrUpdateProduct(AddFormModel product)
+		{
+			return new JsonResult();
+		}
 
 		static Image ScaleImage(Image source, int width, int height)
 		{

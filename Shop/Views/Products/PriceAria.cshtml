@@ -3,11 +3,11 @@
 
 <p class="price_item">
 	<select>
-		@foreach (var size in @Model.Sizes)
+		@foreach (var size in @Model.SizePriceModels)
 		{
-			<option id="@size.SizeId">@size.SizeName</option>
+			<option sizeid="@size.SizeId">@size.SizeName</option>
 		}
 	</select>
-	<input id="price"/>
+	<input class="price"/>
 	<a href="#" class="btn btn-danger delete_price" onclick="deleteprice(this)" role="button">Удалить</a>
 </p>
