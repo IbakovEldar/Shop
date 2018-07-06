@@ -94,10 +94,7 @@ $(function () {
 		if (prices.length == 0) {
 			$('#price_alert').show();
 			isSuccess = false;
-		} else {
-			var values = 
 		}
-
 
 
 		var photos = $('.photo_container');
@@ -110,6 +107,26 @@ $(function () {
 			return;
 		}
 
+		var product = new Object();
+		product.Name = name;
+		product.Articul = articul;
+		product.Description = description;
+
+
+
+		$.ajax({
+			type: "POST",
+			url: '/Products/AddProduct',
+			contentType: 'application/json; charset=utf-8',
+			dataType: 'json',
+			data: JSON.stringify({ 'product': product }),
+			success: function(result) {
+				alert("Плохо");
+			},
+			error: function (xhr, status, p3) {
+				alert("Плохо");
+			}
+		});
 
 
 	}

@@ -11,6 +11,8 @@ namespace Shop.Models
 
 		public string Name { get; set; }
 
+		public string Articul { get; set; }
+
 		public string Material { get; set; }
 
 		public string Description { get; set; }

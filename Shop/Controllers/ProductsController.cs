@@ -115,6 +115,12 @@ namespace Shop.Controllers
 			return Json(names);
 		}
 
+		public JsonResult AddProduct(ProductModel product)
+		{
+			return new JsonResult();
+		}
+
+
 
 		static Image ScaleImage(Image source, int width, int height)
 		{
