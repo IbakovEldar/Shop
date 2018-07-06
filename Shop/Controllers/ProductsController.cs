@@ -115,10 +115,12 @@ namespace Shop.Controllers
 			return Json(names);
 		}
 
+
 		public ActionResult AddOrUpdateProduct(AddFormModel product)
 		{
 			return new JsonResult();
 		}
+
 
 		static Image ScaleImage(Image source, int width, int height)
 		{

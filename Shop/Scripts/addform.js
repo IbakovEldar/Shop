@@ -68,6 +68,7 @@ $(function () {
 		});
 	}
 
+<<<<<<< HEAD
     function addproduct(event) {
         $('.alert-danger').hide();
         var name = $('#name').val();
@@ -125,10 +126,11 @@ $(function () {
         $.ajax({
             type: "POST",
             url: '/Products/AddOrUpdateProduct',
-            contentType: false,
-            processData: false,
-            data: JSON.stringify(product),
+            contentType: 'application/json; charset=utf-8',
+            dataType: 'json',
+            data: JSON.stringify({ 'product': product }),
             success: function(result) {
+                alert('Ok');
             },
             error: function(xhr, status, p3) {
                 $('#photo_load_alert').show();
