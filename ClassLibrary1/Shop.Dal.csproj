@@ -61,6 +61,7 @@
     <Compile Include="Entities\ProductCard.cs" />
     <Compile Include="Entities\ProductType.cs" />
     <Compile Include="Entities\SizePrice.cs" />
+    <Compile Include="Extensions\SqlExtensions.cs" />
     <Compile Include="Implementation\ProductRepository.cs" />
     <Compile Include="Interface\IProductRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

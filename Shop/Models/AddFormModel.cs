@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Shop.Dal.Entities;
 
 namespace Shop.Models
 {
@@ -13,6 +14,10 @@ namespace Shop.Models
 		public string Articul { get; set; }
 
 		public string Description { get; set; }
+
+		public ProductType Type { get; set; }
+
+		public Material Material { get; set; }
 
 		public List<string> Images { get; set; }
 

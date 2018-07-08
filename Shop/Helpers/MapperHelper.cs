@@ -27,6 +27,18 @@ namespace Shop.Helpers
 			return material;
 		}
 
+		public static string GetMaterial(this Material material)
+		{
+			var name = string.Empty;
+			switch(material)
+			{
+				case Material.Chlopok:
+					name="Хлопок";
+					break;
+			}
+			return name;
+		}
+
 		public static string GetMaterial(this ProductCard product)
 		{
 			var material = string.Empty;

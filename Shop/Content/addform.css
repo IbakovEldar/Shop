@@ -1,4 +1,17 @@
-﻿p>span, p>input {
+﻿.legend {
+    width: 120px;
+}
+
+.alert-danger {
+    padding: 5px !important;
+    margin-bottom: 0px !important;
+}
+
+.checkfield {
+    height: 40px;
+}
+
+p>span, p>input {
     margin-left: 50px;
 }
 

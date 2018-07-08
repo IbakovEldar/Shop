@@ -1,4 +1,6 @@
 ﻿@using Shop.Models
+@using Shop.Dal.Entities
+@using Shop.Helpers
 @model AddFormModel
 @{
     ViewBag.Title = "AddForm";
@@ -10,28 +12,99 @@
 <script src="~/Scripts/bootstrap.min.js"></script>
 
 <div class="main_add_window" productid="@Model.Id.GetValueOrDefault()">
-	<h2>Добавить товар</h2>
+    <table>
+        <tr>
+            <td colspan="2"><h2><b>Добавить товар</b></h2></td>
+            <td><a href="#" class="btn btn-success" id="addproduct" role="button">Сохранить</a></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="checkfield">
+                <div class="alert alert-danger" id="name_alert" role="alert">
+                    Введите название
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td class="legend"><span>Название</span></td>
+            <td><input id="name" /></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="checkfield">
+                <div class="alert alert-danger" id="articul_alert" role="alert">
+                    Введите артикул
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td class="legend"><span>Артикул</span></td>
+            <td><input id="articul" /></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="checkfield">
+                <div class="alert alert-danger" id="description_alert" role="alert">
+                    Введите описание
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td class="legend"><span>Описание</span></td>
+            <td><textarea id="description" cols="40"></textarea></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="checkfield">
+            </td>
+        </tr>
+        <tr>
+            <td class="legend"><span>Материал</span></td>
+            <td>
+                <select id="material">
+                    @foreach (Material material in Enum.GetValues(typeof(Material)))
+                    {
+                        <option sizeid="(int)@material">@material.GetMaterial()</option>
+                    }
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="checkfield">
+            </td>
+        </tr>
+        <tr>
+            <td class="legend"><span>Тип</span></td>
+            <td>
+                <select id="producttype">
+                    @foreach (ProductType type in Enum.GetValues(typeof(ProductType)))
+                    {
+                        <option sizeid="(int)@type">@type.GetPathName()</option>
+                    }
+                </select>
+            </td>
+        </tr>
+        
+        @*<tr >
+            <td colspan="2"><h2>Цены</h2></td>
+        </tr>
+        <tr>
+            <td class="checkfield">
+                <div class="alert alert-danger" id="price_alert" role="alert">
+                    Введите цену
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td class="legend"><div class="pricearia">
+                @Html.Partial("PriceAria", @Model)
+            </div></td>
+            <td><a href="#" class="btn btn-success" id="addnewprice" role="button">Добавить еще</a></td>
+        </tr>*@
+    </table>
+    
 
-	<p>
-		<div class="alert alert-danger" id="name_alert" role="alert">
-			Введите название
-		</div>
-		<span>Название</span><input id="name"/>
-	</p>
-	<p>
-		<div class="alert alert-danger" id="articul_alert" role="alert">
-			Введите артикул
-		</div>
-		<span>Артикул</span><input id="articul"/>
-	</p>
-	<p>
-		<div class="alert alert-danger" id="description_alert" role="alert">
-			Введите описание
-		</div>
-		<span>Описание</span><textarea id="description" cols="40"></textarea>
-	</p>
-	<p></p>
-	<p></p>
 	<p>
 		<h2><b>Цены</b>
 		</h2>
@@ -40,13 +113,6 @@
 		Введите цену
 	</div>
 	<div class="pricearia">
-		@*<select>
-				@foreach (var size in @Model.Sizes)
-				{
-					<option id="@size.SizeId">@size.SizeName</option>
-				}
-			</select>
-			<input id="price"/>*@
 		@Html.Partial("PriceAria", @Model)
 	</div>
 	<p>
@@ -75,8 +141,6 @@
 			</p>
 		</div>
 	</p>
-
-	<a href="#" class="btn btn-success" id="addproduct" role="button">Сохранить</a>
 </div>
 
 

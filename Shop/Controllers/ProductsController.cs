@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using Shop.Dal.Entities;
 using Shop.Dal.Interface;
 using Shop.Helpers;
 using Shop.Models;
 using System.Web.Mvc;
+using Newtonsoft.Json;
 
 namespace Shop.Controllers
 {
@@ -101,6 +103,7 @@ namespace Shop.Controllers
 					// получаем имя файла
 					string fileName = System.IO.Path.GetFileName(upload.FileName);
 					var newFileName = Guid.NewGuid() + fileName;
+
 					upload.SaveAs(Server.MapPath("~/TempFolder/" + newFileName));
 					names.Add(newFileName);
 
@@ -116,9 +119,38 @@ namespace Shop.Controllers
 		}
 
 
-		public ActionResult AddOrUpdateProduct(AddFormModel product)
+		public JsonResult AddOrUpdateProduct(AddFormModel product)
 		{
-			return new JsonResult();
+			var imageNames = new List<string>();
+			foreach (var productImage in product.Images)
+			{
+				var path = Server.MapPath("~/TempFolder/" + productImage);
+				Bitmap image;
+				using (var stream = new FileStream(path, FileMode.Open))
+				{
+					image = new Bitmap(stream);
+				}
+				var thumbImage = ScaleImage(image, 100, 100);
+				var newName = $"{product.Articul}_{Guid.NewGuid()}.jpg";
+				imageNames.Add(newName);
+				image.Save(Server.MapPath("~/ProductImages/" + newName));
+				thumbImage.Save(Server.MapPath("~/ProductImages/Thumb/" + newName));
+			}
+
+			var id = _productRepository.AddProduct(new ProductCard
+			{
+				Name = product.Name,
+				Articul = product.Articul,
+				Description = product.Description,
+				ImageNames = product.Images,
+				Prices = product.Sizes.Select(x => new SizePrice
+					{
+						SizeId = x.SizeId,
+						Price = x.Price
+					})
+					.ToList(),
+			});
+			return Json(new {Id = id});
 		}
 
 

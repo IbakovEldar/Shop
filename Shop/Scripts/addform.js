@@ -68,7 +68,7 @@ $(function () {
 		});
 	}
 
-<<<<<<< HEAD
+
     function addproduct(event) {
         $('.alert-danger').hide();
         var name = $('#name').val();
@@ -119,9 +119,11 @@ $(function () {
         product.Sizes = $('.price_item').map(function() {
             var obj = new Object();
             obj.SizeId = $(this).find("option:checked").attr("sizeid");
-            obj.SizePrice = $(this).find("input").val();
+            obj.Price = $(this).find("input").val();
             return obj;
         }).toArray();
+        product.Type = $('.pricetype').find("option:checked").attr("sizeid");
+        product.Material = $('.material').find("option:checked").attr("sizeid");
 
         $.ajax({
             type: "POST",

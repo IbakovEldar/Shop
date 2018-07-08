@@ -14,5 +14,7 @@ namespace Shop.Dal.Interface
 		ProductCard GetProductCard(int id);
 
 		List<SizePrice> GetSizes();
+
+		int AddProduct(ProductCard product);
 	}
 }

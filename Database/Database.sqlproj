@@ -58,11 +58,16 @@
   <ItemGroup>
     <Folder Include="Properties" />
     <Folder Include="Table" />
+    <Folder Include="Types" />
+    <Folder Include="StoredProcedure" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Table\Products.sql" />
     <Build Include="Table\Sizes.sql" />
     <Build Include="Table\ProductPrice.sql" />
     <Build Include="Table\ProductPhotos.sql" />
+    <Build Include="Types\ProductPriceTable.sql" />
+    <Build Include="StoredProcedure\AddProduct.sql" />
+    <Build Include="Types\ImagesTable.sql" />
   </ItemGroup>
 </Project>
