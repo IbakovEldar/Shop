@@ -12,7 +12,7 @@ namespace Shop.Helpers
 
 		public static string ImageUrl(this Product product)
 		{
-			return $"/images/{product.FileName}";
+			return $"/ProductImages/{product.FileName}";
 		}
 
 		public static string GetMaterial(this Product product)

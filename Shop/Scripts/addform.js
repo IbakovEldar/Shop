@@ -122,8 +122,8 @@ $(function () {
             obj.Price = $(this).find("input").val();
             return obj;
         }).toArray();
-        product.Type = $('.pricetype').find("option:checked").attr("sizeid");
-        product.Material = $('.material').find("option:checked").attr("sizeid");
+        product.Type = $('#producttype').find("option:checked").attr("sizeid");
+        product.Material = $('#material').find("option:checked").attr("sizeid");
 
         $.ajax({
             type: "POST",
@@ -146,4 +146,6 @@ $(function () {
 	$('#addnewprice').bind("click", addprice);
 	$('#photoes').bind('change', handleFileSelect);
 	$('#addproduct').bind('click', addproduct);
+	$('#material option:first').attr('selected', 'selected');
+    $('#producttype option:first').attr('selected', 'selected');
 });

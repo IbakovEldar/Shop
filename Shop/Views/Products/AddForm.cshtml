@@ -64,7 +64,7 @@
                 <select id="material">
                     @foreach (Material material in Enum.GetValues(typeof(Material)))
                     {
-                        <option sizeid="(int)@material">@material.GetMaterial()</option>
+                        <option sizeid="@((int)material)">@material.GetMaterial()</option>
                     }
                 </select>
             </td>
@@ -80,7 +80,7 @@
                 <select id="producttype">
                     @foreach (ProductType type in Enum.GetValues(typeof(ProductType)))
                     {
-                        <option sizeid="(int)@type">@type.GetPathName()</option>
+                        <option sizeid="@((int)type)">@type.GetPathName()</option>
                     }
                 </select>
             </td>

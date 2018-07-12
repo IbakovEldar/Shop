@@ -123,6 +123,7 @@
     }
 
     loadItems();
+    $('.product-item').bind('click', get_product_card);
    
     $(window).scroll(function () {
         if ($(window).scrollTop() > ($(document).height() / 2)) {

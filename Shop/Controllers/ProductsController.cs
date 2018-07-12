@@ -124,13 +124,11 @@ namespace Shop.Controllers
 			var imageNames = new List<string>();
 			foreach (var productImage in product.Images)
 			{
-				var path = Server.MapPath("~/TempFolder/" + productImage);
-				Bitmap image;
-				using (var stream = new FileStream(path, FileMode.Open))
-				{
-					image = new Bitmap(stream);
-				}
-				var thumbImage = ScaleImage(image, 100, 100);
+				var path = Server.MapPath("~/TempFolder/" + productImage);		
+
+				var originalImage = Image.FromFile(path);
+				var thumbImage = ScaleImage(originalImage, 100, 100);
+				var image = ScaleImage(originalImage,601,352);
 				var newName = $"{product.Articul}_{Guid.NewGuid()}.jpg";
 				imageNames.Add(newName);
 				image.Save(Server.MapPath("~/ProductImages/" + newName));
@@ -142,7 +140,9 @@ namespace Shop.Controllers
 				Name = product.Name,
 				Articul = product.Articul,
 				Description = product.Description,
-				ImageNames = product.Images,
+				ImageNames = imageNames,
+				Type = product.Type,
+				Material = product.Material,
 				Prices = product.Sizes.Select(x => new SizePrice
 					{
 						SizeId = x.SizeId,
